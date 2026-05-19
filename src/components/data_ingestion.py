@@ -82,10 +82,11 @@ if __name__ == "__main__":
         test_data
     )
     modelTrainer=ModelTrainer()
-    modelTrainer.initiate_model_trainer(train_arr, test_arr)
+    r2_score = modelTrainer.initiate_model_trainer(train_arr, test_arr)
 
     print("Data ingestion and transformation completed")
     print("Train array shape:", train_arr.shape)
     print("Test array shape:", test_arr.shape)
     print("Preprocessor saved at:", preprocessor_path)
-    print(modelTrainer.initiate_model_trainer(train_arr, test_arr))
+    print("Model R2 Score:", r2_score)
+
