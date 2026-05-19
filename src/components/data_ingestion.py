@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from src.exception import CustomException
 from src.logger import logging
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 
 @dataclass
@@ -16,7 +18,7 @@ class DataIngestionConfig:
     test_data_path: str = os.path.join("artifacts", "test.csv")
     raw_data_path: str = os.path.join("artifacts", "data.csv")
 
-
+ 
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
@@ -79,8 +81,11 @@ if __name__ == "__main__":
         train_data,
         test_data
     )
+    modelTrainer=ModelTrainer()
+    modelTrainer.initiate_model_trainer(train_arr, test_arr)
 
     print("Data ingestion and transformation completed")
     print("Train array shape:", train_arr.shape)
     print("Test array shape:", test_arr.shape)
     print("Preprocessor saved at:", preprocessor_path)
+    print(modelTrainer.initiate_model_trainer(train_arr, test_arr))
